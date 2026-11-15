@@ -1,5 +1,22 @@
+# Secrets
 .env
-vectorstore/
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python environments and caches
+.venv/
 venv/
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Generated databases and outputs
+vectorstore/
+*.log
+logs/
+.DS_Store
+.ipynb_checkpoints/
