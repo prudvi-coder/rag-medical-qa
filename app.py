@@ -40,7 +40,7 @@ with st.sidebar:
     st.markdown("""
 **About this tool:**
 
-Answers questions about Crohn's disease and IBD using 431 peer-reviewed PubMed abstracts.
+Explores Crohn's disease and IBD research using an indexed collection of PubMed abstracts.
 
 Every answer includes:
 - 📊 Source coverage indicator (not a probability of correctness)
