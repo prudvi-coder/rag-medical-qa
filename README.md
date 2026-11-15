@@ -65,7 +65,7 @@ The repository currently tracks previously generated JSON abstracts and chunks i
 | `vectorstore.py` | Create local Chroma vector index using PubMedBERT embeddings |
 | `rag_pipeline.py` | Query rewrite, hybrid retrieval, fusion, LLM response and source references |
 | `app.py` | Streamlit UI and retrieved-reference display |
-| `check_setup.py` | Offline checks for required data paths and environment variables |
+| `test_setup.py` | Offline checks for required data paths and environment variables |
 
 ## Limitations and responsible use
 
