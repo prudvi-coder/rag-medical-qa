@@ -3,7 +3,7 @@ from rag_pipeline import RAGPipeline
 
 
 def render_result(result):
-    """Render confidence badge and citations."""
+    """Display source coverage and retrieved references (not model confidence)."""
     level = result["confidence_level"]
     msg = result["confidence_msg"]
     count = result["retrieved_count"]
@@ -43,7 +43,7 @@ with st.sidebar:
 Answers questions about Crohn's disease and IBD using 431 peer-reviewed PubMed abstracts.
 
 Every answer includes:
-- 📊 Confidence score
+- 📊 Source coverage indicator (not a probability of correctness)
 - 📚 Source citations  
 - 🔗 Direct PubMed links
 """)
@@ -69,7 +69,7 @@ if "messages" not in st.session_state:
 
 # Title
 st.title("IBD & Crohn's Disease Research Assistant")
-st.caption("Answers grounded in peer-reviewed PubMed literature · Not medical advice")
+st.caption("Literature exploration only · Retrieved citations are not verified answer claims · Not medical advice")
 
 # Display chat history
 for message in st.session_state.messages:
