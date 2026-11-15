@@ -8,7 +8,7 @@ from Bio import Entrez
 load_dotenv()
 
 # --- Config ---
-Entrez.email = "prudvisep@gmail.com"
+Entrez.email = os.getenv("NCBI_EMAIL", "").strip()
 Entrez.api_key = os.getenv("NCBI_API_KEY")
 
 SEARCH_TERMS = [
@@ -104,6 +104,8 @@ def parse_records(records):
 
 
 def main():
+    if not Entrez.email:
+        raise RuntimeError("Set NCBI_EMAIL in your .env before querying PubMed.")
     all_abstracts = []
     seen_pmids = set()
 
