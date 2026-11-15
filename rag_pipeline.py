@@ -126,18 +126,18 @@ class RAGPipeline:
 
     def _get_confidence(self, docs):
         """
-        Confidence scoring based on number of retrieved docs.
+        Source coverage based on number of retrieved chunks; not an answer-confidence estimate.
         Green:  4+ docs retrieved
         Yellow: 2-3 docs retrieved
         Red:    0-1 docs retrieved
         """
         count = len(docs)
         if count >= 4:
-            return "green", "High confidence — multiple relevant sources found."
+            return "green", "4+ retrieved chunks — broad source coverage, not verified answer accuracy."
         elif count >= 2:
-            return "yellow", "Medium confidence — limited sources found."
+            return "yellow", "2–3 retrieved chunks — limited source coverage, not verified answer accuracy."
         else:
-            return "red", "Low confidence — very few sources found. Answer may be incomplete."
+            return "red", "0–1 retrieved chunks — minimal source coverage; answer may be incomplete."
 
     def _extract_citations(self, docs):
         """Extract unique citations from retrieved docs."""
@@ -164,7 +164,7 @@ class RAGPipeline:
         rewritten_question = self._rewrite_query(question)
         retrieved_docs = self._hybrid_retrieve(rewritten_question)
 
-        # Confidence scoring
+        # Source coverage (not calibrated correctness)
         confidence_level, confidence_msg = self._get_confidence(retrieved_docs)
 
         # Citations
