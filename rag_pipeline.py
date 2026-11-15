@@ -133,11 +133,11 @@ class RAGPipeline:
         """
         count = len(docs)
         if count >= 4:
-            return "green", "High confidence — multiple relevant sources found."
+            return "green", "4+ retrieved chunks — broad source coverage, not verified answer accuracy."
         elif count >= 2:
-            return "yellow", "Medium confidence — limited sources found."
+            return "yellow", "2–3 retrieved chunks — limited source coverage, not verified answer accuracy."
         else:
-            return "red", "Low confidence — very few sources found. Answer may be incomplete."
+            return "red", "0–1 retrieved chunks — minimal source coverage; answer may be incomplete."
 
     def _extract_citations(self, docs):
         """Extract unique citations from retrieved docs."""
