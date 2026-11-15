@@ -126,7 +126,7 @@ class RAGPipeline:
 
     def _get_confidence(self, docs):
         """
-        Confidence scoring based on number of retrieved docs.
+        Source coverage based on number of retrieved chunks; not an answer-confidence estimate.
         Green:  4+ docs retrieved
         Yellow: 2-3 docs retrieved
         Red:    0-1 docs retrieved
@@ -164,7 +164,7 @@ class RAGPipeline:
         rewritten_question = self._rewrite_query(question)
         retrieved_docs = self._hybrid_retrieve(rewritten_question)
 
-        # Confidence scoring
+        # Source coverage (not calibrated correctness)
         confidence_level, confidence_msg = self._get_confidence(retrieved_docs)
 
         # Citations
